@@ -7,7 +7,7 @@ Ce projet est un quiz interactif développé en HTML, CSS et JavaScript. Il incl
 
 # Contenu du projet
 
-index.html : Structure principale du quiz, style css (intégrés directement dans le fichier HTML) et script js (aussi intégré directement dans le fichier HTML) pour l'experience quiz-utilisateur. 
+quiz.html : Structure principale du quiz, style css (intégrés directement dans le fichier HTML) et script js (aussi intégré directement dans le fichier HTML) pour l'experience quiz-utilisateur. 
 
 # Fonctionnalités
 
@@ -34,20 +34,17 @@ Depuis GitHub, clique sur Code > Codespaces > Create codespace on main.
 
 1. Chronomètre
 
-Le chronomètre commence à 50 secondes et diminue chaque seconde.
-
+Le chronomètre commence à 50 secondes et diminue chaque seconde.<br>
 Lorsqu'il atteint 0, le quiz se bloque et un message d'alerte s'affiche.
 
 2. Système de Score
 
-Chaque question a un attribut correctAnswer.
-
+Chaque question a un attribut correctAnswer.<br>
 Lors de la soumission, le script compare les réponses choisies avec celles correctes et met à jour le score.
 
 3. Validation du Quiz
 
-Après soumission, le score est mis à jour et toutes les options sont désactivées pour éviter des modifications.
-
+Après soumission, le score est mis à jour et toutes les options sont désactivées pour éviter des modifications.<br>
 La page remonte automatiquement après validation.
 
 # Amélioration possible
