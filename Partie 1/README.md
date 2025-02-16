@@ -1,4 +1,4 @@
-# Mini Projet : Quiz interactif 
+# Mini Projet : Quiz interactif Partie 1
 
 
 # Description
