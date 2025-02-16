@@ -87,42 +87,42 @@
 </head>
 
 <body>
-    <div class="score"> Score: <span id="score"> 0 </span> </div>
+    <div class="score"> Score: <span id="score"> 0</span>/5 </div>
     <div id="quiz">
         <div class="question" correctAnswer="b">
             <p>1. Quelle est la fonction principale d'un pare-feu (firewall) ?</p>
-            <label><input type="radio" value="a"> Bloquer tous les sites web </label>
-            <label><input type="radio" value="b"> Protéger un réseau en filtrant le trafic</label>
-            <label><input type="radio" value="c"> Accélérer la connexion Internet</label>
-            <label><input type="radio" value="d"> Détecter automatiquement les virus</label>
+            <label><input type="radio" value="a" name="1"> Bloquer tous les sites web </label>
+            <label><input type="radio" value="b" name="1"> Protéger un réseau en filtrant le trafic</label>
+            <label><input type="radio" value="c" name="1"> Accélérer la connexion Internet</label>
+            <label><input type="radio" value="d" name="1"> Détecter automatiquement les virus</label>
         </div>
         <div class="question" correctAnswer="c">
             <p>2. Quel langage de programmation est souvent utilisé pour l'analyse de données et l'intelligence artificielle ?</p>
-            <label><input type="radio" value="a"> C </label>
-            <label><input type="radio" value="b"> Java</label>
-            <label><input type="radio" value="c"> Python</label>
-            <label><input type="radio" value="d"> HTML</label>
+            <label><input type="radio" value="a" name="2"> C </label>
+            <label><input type="radio" value="b" name="2"> Java</label>
+            <label><input type="radio" value="c" name="2"> Python</label>
+            <label><input type="radio" value="d" name="2"> HTML</label>
         </div>
         <div class="question" correctAnswer="b">
             <p>3. Si un site web utilise "HTTPS" au lieu de "HTTP", qu'est-ce que cela signifie ?</p>
-            <label><input type="radio" value="a"> Le site est plus rapide  </label>
-            <label><input type="radio" value="b"> Le site est sécurisé avec un chiffrement</label>
-            <label><input type="radio" value="c"> Le site ne fonctionne qu'avec Google Chrome </label>
-            <label><input type="radio" value="d"> Le site est réservé aux développeurs</label>
+            <label><input type="radio" value="a" name="3"> Le site est plus rapide  </label>
+            <label><input type="radio" value="b" name="3"> Le site est sécurisé avec un chiffrement</label>
+            <label><input type="radio" value="c" name="3"> Le site ne fonctionne qu'avec Google Chrome </label>
+            <label><input type="radio" value="d" name="3"> Le site est réservé aux développeurs</label>
         </div>
         <div class="question" correctAnswer="c">
             <p>4. Lequel de ces mots de passe est le plus sécurisé ?</p>
-            <label><input type="radio" value="a"> 123456  </label>
-            <label><input type="radio" value="b"> Azerty123</label>
-            <label><input type="radio" value="c"> P@ssw0rd!2024</label>
-            <label><input type="radio" value="d"> password</label>
+            <label><input type="radio" value="a" name="4"> 123456  </label>
+            <label><input type="radio" value="b" name="4"> Azerty123</label>
+            <label><input type="radio" value="c" name="4"> P@ssw0rd!2024</label>
+            <label><input type="radio" value="d" name="4"> password</label>
         </div>
         <div class="question" correctAnswer="a">
             <p>5. Quel type d'attaque consiste à envoyer des e-mails frauduleux pour voler des informations personnelles ?</p>
-            <label><input type="radio" value="a"> Phishing </label>
-            <label><input type="radio" value="b"> Ransomware</label>
-            <label><input type="radio" value="c"> DDoS</label>
-            <label><input type="radio" value="d"> Brute force</label>
+            <label><input type="radio" value="a" name="5"> Phishing </label>
+            <label><input type="radio" value="b" name="5"> Ransomware</label>
+            <label><input type="radio" value="c" name="5"> DDoS</label>
+            <label><input type="radio" value="d" name="5"> Brute force</label>
         </div>
         <div class="timer" id="timer">Temps restant: <span id="timeleft">40</span>s</div>
         <button onclick="submit()">Valider</button>
