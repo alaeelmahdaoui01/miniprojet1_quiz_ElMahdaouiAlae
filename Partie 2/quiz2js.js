@@ -4,7 +4,7 @@ document.getElementById('configurationform').addEventListener('submit', function
 });  // en appuyant sur demarrer quiz 
 
 let reponsescorrectes = [];
-let TimerDecrease;
+let TimerDecrease; 
 
 function displayQuiz(questions) {
     document.getElementById('configuration').style.display = 'none';
@@ -19,19 +19,39 @@ function displayQuiz(questions) {
         questionNumI.classList.add('question');
         questionNumI.innerHTML = `<p>${indexI + 1}. ${question.question}</p>`;
 
-        let answers = [...question.incorrect_answers, question.correct_answer];
-        answers.sort(() => Math.random() - 0.5); // pour que la bonne reponse soit randomly posee dans les choix 
+        let answers = [];
+        for (let i = 0; i < question.incorrect_answers.length; i++) { // directement l'API fournit pour les questions a choix multiple, 1 bonne reponse et 3 mauvaises reponses
+            // et pour les questions a choix True/false : 1 vraie et 1 fausse 
+            answers[i] = question.incorrect_answers[i];
+        } // on garantit la presence de la bonne reponse dans la liste des reponses answers 
+        answers[answers.length] = question.correct_answer;  // on ajoute dans answers d'une question, les reponses a cette question
+
+        trialeatoire(answers); // pour que la bonne reponse soit randomly posee dans les choix 
 
         answers.forEach(function(answerJ) {
             const answerJ_ofQuestionI = document.createElement('div');
             answerJ_ofQuestionI.innerHTML = `<input type="radio" name="${indexI}" value="${answerJ}"> ${answerJ}`;
-            questionNumI.appendChild(answerJ_ofQuestionI);
+            questionNumI.appendChild(answerJ_ofQuestionI); // a chaque question, on ajoute ses reponses possibles
         });
 
-        quizquestions.appendChild(questionNumI);
-        reponsescorrectes.push(question.correct_answer);
+        quizquestions.appendChild(questionNumI);  // on ajoute dans quizquestions chaque question du quiz
+        reponsescorrectes.push(question.correct_answer); 
     });
 }
+
+
+
+// fonction pour trier les reponses aleatoirement , cette fct est utilisée au sein de la fct displayquiz pour preparer les reponses
+// on utilise l'algorithme Fisher-Yates
+function trialeatoire(answers) {
+    for (let i = answers.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // Un index aléatoire entre 0 et i
+        [answers[i], answers[j]] = [answers[j], answers[i]]; // Échange des éléments
+    }
+}
+
+
+
 
 
 function startTimer() {
@@ -58,6 +78,10 @@ function startTimer() {
     TimerDecrease = setInterval(TimerUpdate, 1000); // la fonction de diminuer le minuteur se repete chaque 1000 ms (1s)
 }
 
+
+
+
+
 function fetchQuizData() { // starts the timer and displays the questions generated from the url 
     const category = document.getElementById('category').value;
     const difficulty = document.getElementById('difficulty').value;
@@ -73,6 +97,9 @@ function fetchQuizData() { // starts the timer and displays the questions genera
         })
 }
 
+
+
+
 function ScoreUpdate() {
     let score = 0;
     // selecting all questions by using the queryselectall on all divs that have class = question
@@ -86,6 +113,10 @@ function ScoreUpdate() {
     });
     document.getElementById("score").textContent = score;
 }
+
+
+
+
 
 function submit() {
 
