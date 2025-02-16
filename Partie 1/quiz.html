@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <title> Quiz part1 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #e3f2fd;
+        }
+        
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            /*pour que le timer reste a sa place meme en descendant dans la page;*/
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #0d47a1;
+        }
+        
+        #timer {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e3f2fd;
+            background: #124772;
+            padding: 10px;
+            border-radius: 5px;
+            /*pour que le timer reste a sa place meme en descendant dans la page;*/
+            position: fixed;
+            top: 10px;
+            right: 20px;
+        }
+        
+        #quiz {
+            background: #bdd5e6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            margin: auto;
+            margin-top: 60px;
+        }
+        
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: #124772;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            color: #e3f2fd;
+        }
+        
+        .question p {
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            width: 25%;
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #124772;
+            color: #e3f2fd;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background-color: #3164a7;
+        }
+        
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="score"> Score: <span id="score"> 0 </span> </div>
+    <div id="quiz">
+        <div class="question" correctAnswer="b">
+            <p>1. Quelle est la fonction principale d'un pare-feu (firewall) ?</p>
+            <label><input type="radio" value="a"> Bloquer tous les sites web </label>
+            <label><input type="radio" value="b"> Protéger un réseau en filtrant le trafic</label>
+            <label><input type="radio" value="c"> Accélérer la connexion Internet</label>
+            <label><input type="radio" value="d"> Détecter automatiquement les virus</label>
+        </div>
+        <div class="question" correctAnswer="c">
+            <p>2. Quel langage de programmation est souvent utilisé pour l'analyse de données et l'intelligence artificielle ?</p>
+            <label><input type="radio" value="a"> C </label>
+            <label><input type="radio" value="b"> Java</label>
+            <label><input type="radio" value="c"> Python</label>
+            <label><input type="radio" value="d"> HTML</label>
+        </div>
+        <div class="question" correctAnswer="b">
+            <p>3. Si un site web utilise "HTTPS" au lieu de "HTTP", qu'est-ce que cela signifie ?</p>
+            <label><input type="radio" value="a"> Le site est plus rapide  </label>
+            <label><input type="radio" value="b"> Le site est sécurisé avec un chiffrement</label>
+            <label><input type="radio" value="c"> Le site ne fonctionne qu'avec Google Chrome </label>
+            <label><input type="radio" value="d"> Le site est réservé aux développeurs</label>
+        </div>
+        <div class="question" correctAnswer="c">
+            <p>4. Lequel de ces mots de passe est le plus sécurisé ?</p>
+            <label><input type="radio" value="a"> 123456  </label>
+            <label><input type="radio" value="b"> Azerty123</label>
+            <label><input type="radio" value="c"> P@ssw0rd!2024</label>
+            <label><input type="radio" value="d"> password</label>
+        </div>
+        <div class="question" correctAnswer="a">
+            <p>5. Quel type d'attaque consiste à envoyer des e-mails frauduleux pour voler des informations personnelles ?</p>
+            <label><input type="radio" value="a"> Phishing </label>
+            <label><input type="radio" value="b"> Ransomware</label>
+            <label><input type="radio" value="c"> DDoS</label>
+            <label><input type="radio" value="d"> Brute force</label>
+        </div>
+        <div class="timer" id="timer">Temps restant: <span id="timeleft">40</span>s</div>
+        <button onclick="submit()">Valider</button>
+    </div>
+
+    <script>
+        let timer = 50; // initialisation du timer à 50s
+
+        function TimerUpdate() {
+            timer--; // le timer diminue de 1
+
+            if (timer == 0) {
+                alert("Temps du quiz écoulé");
+                clearInterval(TimerDecrease);  // et on arrete le timer, en arretant la fct qui le fait diminuer chaque 1s
+
+                let radios = document.querySelectorAll('input[type="radio"]')
+                radios.forEach(radio => {
+                    radio.disabled = true;
+                }); // freeze le formulaire quand le minuteur finit 
+            }
+
+            // modifier sur la page HTML le timer pour qu'il apparaisee a l'utilisateur combien de temps il lui reste
+            document.getElementById("timeleft").textContent = timer
+        }
+
+        TimerDecrease = setInterval(TimerUpdate, 1000); // la fonction de diminuer le minuteur se repete chaque 1000 ms (1s)
+
+        function ScoreUpdate() {
+            let score = 0;
+            // selecting all questions by using the queryselectall on all divs that have class = question
+            let questions = document.querySelectorAll(".question")
+            questions.forEach(function(question) {
+                rightanswer = question.getAttribute("correctAnswer");
+                selectedanswer = question.querySelector("input[type=radio]:checked")
+                if (selectedanswer && rightanswer == selectedanswer.value) {
+                    score++;
+                }
+            });
+            document.getElementById("score").textContent = score;
+        }
+
+        function submit() {
+
+            clearInterval(TimerDecrease);
+
+            ScoreUpdate();
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            }); // to scroll to the top of the page after clicking on valider 
+
+            let radios = document.querySelectorAll('input[type="radio"]')
+            radios.forEach(radio => {
+                radio.disabled = true;
+            }); // freeze le formulaire apres submission
+
+        }
+    </script>
+</body>
+
+</html>
