@@ -64,7 +64,12 @@ function startTimer() {
 
         if (timer == 0) {
             alert("Temps du quiz écoulé");
-            clearInterval(TimerDecrease);
+            clearInterval(TimerDecrease); // et on arrete le timer, en arretant la fct qui le fait diminuer chaque 1s
+            ScoreUpdate(); // update du score quand le minuteur est ecoulé mm si l'utilisateur ne valide pas ses reponses
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            }); // to scroll to the top of the page after the timer ends  
 
             let radios = document.querySelectorAll('input[type="radio"]')
             radios.forEach(radio => {
