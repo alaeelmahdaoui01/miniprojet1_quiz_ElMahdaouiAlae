@@ -1,7 +1,7 @@
 document.getElementById('configurationform').addEventListener('submit', function(event) {
     event.preventDefault();
     fetchQuizData();
-});  // en appuyant sur demarrer quiz 
+});  //en appuyant sur demarrer quiz 
 
 let reponsescorrectes = [];
 let TimerDecrease; 
