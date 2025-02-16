@@ -43,7 +43,7 @@ L'utilisateur configure le quiz en sélectionnant les paramètres souhaités (no
 
 Les questions s'affichent avec les options de réponses sous forme de boutons radio. L'utilisateur sélectionne une réponse pour chaque question.
 
-3- Soumettre le quiz : Lorsque toutes les questions sont répondues ou que le temps est écoulé, l'utilisateur peut soumettre le quiz pour voir son score.
+3- Soumettre le quiz : Lorsque toutes les questions sont répondues, l'utilisateur peut soumettre le quiz pour voir son score. Ou que le temps est écoulé, le score apparait immediatement à l'utilisateur sans devoir soumettre.
 
 4- Calcul du score : Après la soumission, le score est affiché en fonction des réponses correctes.
 
